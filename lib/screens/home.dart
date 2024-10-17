@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waslny/screens/notifications.dart';
+import 'package:waslny/screens/profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -74,11 +75,13 @@ class HomeScreen extends StatelessWidget {
             leading: Padding(
               padding: const EdgeInsets.only(top: 15.0), // نفس الإزاحة مثل النص
               child: IconButton(
-                icon: const Icon(Icons.notifications_active, color: Colors.orange),
+                icon: const Icon(Icons.notifications_active,
+                    color: Colors.orange),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Notifications()),
+                    MaterialPageRoute(
+                        builder: (context) => const Notifications()),
                   );
                 },
               ),
@@ -87,14 +90,22 @@ class HomeScreen extends StatelessWidget {
             // إزاحة actions IconButton إلى الأسفل لمساواته مع النص
             actions: [
               Padding(
-                padding: const EdgeInsets.only(top: 15.0), // نفس الإزاحة مثل النص
+                padding: const EdgeInsets.only(top: 15.0),
+                // نفس الإزاحة مثل النص
                 child: IconButton(
                   icon: const Icon(Icons.person, color: Colors.orange),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProfilePage()),
+                    );
+                  },
                 ),
               ),
             ],
-            backgroundColor: Colors.transparent, // اجعل خلفية AppBar شفافة
+            backgroundColor: Colors.transparent,
+            // اجعل خلفية AppBar شفافة
             elevation: 0, // إلغاء ارتفاع AppBar الافتراضي
           ),
         ),
@@ -162,7 +173,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     child: const Align(
-                      alignment: Alignment.centerRight, // النص على اليمين
+                      alignment: Alignment(0.6, 0.6), // النص على اليمين
                       child: Text('في طريقك',
                           style: TextStyle(fontFamily: 'SomarSans')),
                     ),
@@ -178,8 +189,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     child: const Align(
-                      alignment: Alignment.centerRight, // النص على اليمين
-                      child: Text('رحلة بجواري',
+                      alignment: Alignment(0.6, 0.6), // النص على اليمين
+                      child: Text('رحلة بجوي',
                           style: TextStyle(fontFamily: 'SomarSans')),
                     ),
                   ),
