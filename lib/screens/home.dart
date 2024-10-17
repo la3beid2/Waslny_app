@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:waslny/screens/notifications.dart';
+import 'package:waslny/screens/profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,15 +43,17 @@ class HomeScreen extends StatelessWidget {
           ),
           child: AppBar(
             title: const Padding(
-              padding: EdgeInsets.only(top: 8.0), // إزاحة المحتوى إلى الأسفل
+              padding: EdgeInsets.only(top: 15.0), // إزاحة المحتوى إلى الأسفل
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text("  : توصيل إلى  ",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'SomarSans',
-                          fontSize: 12)),
+                  Text(
+                    "  : توصيل إلى  ",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'SomarSans',
+                        fontSize: 12),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -65,17 +69,37 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
 
-            leading: IconButton(
-              icon:
-                  const Icon(Icons.notifications_active, color: Colors.orange),
-              onPressed: () {
-                // Action when the icon is pressed
-              },
+            // إزاحة leading IconButton إلى الأسفل لمساواته مع النص
+            leading: Padding(
+              padding: const EdgeInsets.only(top: 15.0), // نفس الإزاحة مثل النص
+              child: IconButton(
+                icon: const Icon(Icons.notifications_active,
+                    color: Colors.orange),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const Notifications()),
+                  );
+                },
+              ),
             ),
+
+            // إزاحة actions IconButton إلى الأسفل لمساواته مع النص
             actions: [
-              IconButton(
-                icon: const Icon(Icons.person, color: Colors.orange),
-                onPressed: () {},
+              Padding(
+                padding: const EdgeInsets.only(top: 15.0),
+                // نفس الإزاحة مثل النص
+                child: IconButton(
+                  icon: const Icon(Icons.person, color: Colors.orange),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProfilePage()),
+                    );
+                  },
+                ),
               ),
             ],
             backgroundColor: Colors.transparent,
@@ -84,6 +108,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+
       backgroundColor: Colors.white, // تعيين خلفية التطبيق باللون الأبيض
       body: SingleChildScrollView(
         child: Column(
@@ -120,7 +145,7 @@ class HomeScreen extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
                     // لمنع الصورة من الخروج عن حدود البطاقة
                     child: Image.asset(
-                      'assets/images/car.jpg',
+                      'assets/images/car1.jpg',
                       fit: BoxFit.cover, // جعل الصورة تملأ البطاقة بالكامل
                     ),
                   ),
@@ -146,7 +171,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     child: const Align(
-                      alignment: Alignment.centerRight, // النص على اليمين
+                      alignment: Alignment(0.6, 0.6), // النص على اليمين
                       child: Text('في طريقك',
                           style: TextStyle(fontFamily: 'SomarSans')),
                     ),
@@ -162,8 +187,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     child: const Align(
-                      alignment: Alignment.centerRight, // النص على اليمين
-                      child: Text('رحلة بجواري',
+                      alignment: Alignment(0.6, 0.6), // النص على اليمين
+                      child: Text('رحلة بجوي',
                           style: TextStyle(fontFamily: 'SomarSans')),
                     ),
                   ),

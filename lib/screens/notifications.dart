@@ -5,67 +5,91 @@ class Notifications extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // قائمة بيانات الإشعارات
+    final List<Map<String, String>> notifications = [
+      {
+        "title": "السائق أحمد الأبيض  في طريقه إليك",
+        "date": "20 أغسطس, 2024",
+      },
+      {
+        "title": "السائق أحمد الأبيض  في طريقه إليك",
+        "date": "20 أغسطس, 2024",
+      },
+      {
+        "title": "السائق أحمد الأبيض  في طريقه إليك",
+        "date": "20 أغسطس, 2024",
+      },
+      {
+        "title": "السائق أحمد الأبيض  في طريقه إليك",
+        "date": "20 أغسطس, 2024",
+      },
+      {
+        "title": "السائق أحمد الأبيض  في طريقه إليك",
+        "date": "20 أغسطس, 2024",
+      },
+    ];
+
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text(
-          "الإشعارات",
-          style: TextStyle(
-            fontFamily: 'SomarSans',
-            color: Color.fromARGB(255, 0, 0, 0),
-            fontSize: 20,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70.0), // ارتفاع AppBar
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white, // لون خلفية AppBar
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1), // لون الظل
+                spreadRadius: 1, // انتشار الظل
+                blurRadius: 5, // درجة ضبابية الظل
+                offset: const Offset(0, 2), // موضع الظل
+              ),
+            ],
           ),
-        ),
-        centerTitle: true,
-        leadingWidth: 60,
-        leading: Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Color(0xFF3FA2F6),
+          child: AppBar(
+            title: const Padding(
+              padding: EdgeInsets.only(top: 15.0),
+              child: Text(
+                "الإشعارات",
+                style: TextStyle(
+                  fontFamily: 'SomarSans',
+                  color: Colors.black,
+                  fontSize: 20,
+                ),
+              ),
             ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+            centerTitle: true,
+            automaticallyImplyLeading: false,
+
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(top: 15.0),
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Color(0xFF3FA2F6),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ),
+            ],
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+
           ),
         ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
       ),
-      body: const SingleChildScrollView(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            PostCard(
-              title: "السائق أحمد الأبيض  في طريقه إليك",
-              content: "",
-              date: "20 أغسطس, 2024",
-            ),
-            PostCard(
-              title: "السائق أحمد الأبيض  في طريقه إليك",
-              content: "",
-              date: "20 أغسطس, 2024",
-            ),
-            PostCard(
-              title: "السائق أحمد الأبيض  في طريقه إليك",
-              content: "",
-              date: "20 أغسطس, 2024",
-            ),
-            PostCard(
-              title: "السائق أحمد الأبيض  في طريقه إليك",
-              content: "",
-              date: "20 أغسطس, 2024",
-            ),
-            PostCard(
-              title: "السائق أحمد الأبيض  في طريقه إليك",
-              content: "",
-              date: "20 أغسطس, 2024",
-            ),
-          ],
-        ),
+
+      body: ListView.builder(
+        padding: const EdgeInsets.all(20.0),
+        itemCount: notifications.length, // عدد الإشعارات في القائمة
+        itemBuilder: (context, index) {
+          return PostCard(
+            title: notifications[index]["title"]!,
+            date: notifications[index]["date"]!,
+          );
+        },
       ),
     );
   }
@@ -73,13 +97,11 @@ class Notifications extends StatelessWidget {
 
 class PostCard extends StatelessWidget {
   final String title;
-  final String content;
   final String date;
 
   const PostCard({
     super.key,
     required this.title,
-    required this.content,
     required this.date,
   });
 
@@ -87,6 +109,7 @@ class PostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 3.0,
+      color: Colors.grey[200],
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
       ),
@@ -110,9 +133,7 @@ class PostCard extends StatelessWidget {
                   size: 30,
                 ),
               ),
-              const SizedBox(
-                width: 16.0,
-              ),
+              const SizedBox(width: 16.0),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,14 +144,6 @@ class PostCard extends StatelessWidget {
                         fontFamily: 'SomarSans',
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 8.0),
-                    Text(
-                      content,
-                      style: const TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 10,
                       ),
                     ),
                     const SizedBox(height: 8.0),
