@@ -7,7 +7,6 @@ class QrCode extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         centerTitle: true,
         actions: [
           IconButton(
@@ -24,12 +23,16 @@ class QrCode extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "الخاص بك QR رمز",
-              style: TextStyle(
-                fontFamily: 'SomarSans',
-                fontSize: 20,
-              ),
+            const Column(
+              children: [
+                const Text(
+                  "الخاص بك QR رمز",
+                  style: TextStyle(
+                    fontFamily: 'SomarSans',
+                    fontSize: 20,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             Container(
@@ -50,6 +53,22 @@ class QrCode extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 200,
+            ),
+            const Text("QR بم يفيد رمز", // Placeholder for QR code
+                style: TextStyle(
+                  fontFamily: 'SomarSans',
+                  fontSize: 16,
+                  color: Colors.black,
+                )),
+                
+            const Text("لشحن حسابك بمبلغ مالي عن طريق السائق", // Placeholder for QR code
+                style: TextStyle(
+                  fontFamily: 'SomarSans',
+                  fontSize: 10,
+                  color: Color.fromARGB(255, 136, 135, 135),
+                )),
           ],
         ),
       ),
