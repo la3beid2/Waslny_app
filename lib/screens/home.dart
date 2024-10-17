@@ -57,13 +57,11 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "شارع عمر المختار",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'SomarSans',
-                            fontSize: 15),
-                      ),
+                      Text("شارع الهلال",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: 'SomarSans',
+                              fontSize: 15)),
                       Icon(Icons.location_on, color: Colors.blue),
                     ],
                   ),
@@ -123,6 +121,7 @@ class HomeScreen extends StatelessWidget {
                 // اجعل الكتابة من اليمين لليسار
                 decoration: InputDecoration(
                   hintText: 'أخبرنا عن وجهتك؟',
+                  hintStyle: const TextStyle(fontFamily: 'SomarSans'),
                   prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
@@ -132,7 +131,6 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -154,10 +152,8 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-
             // المسافة لخلق مسافة بين الشعار والأزرار
             const SizedBox(height: 20),
-
             // زرين كبيرين
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
