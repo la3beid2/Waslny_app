@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:waslny/screens/invite.dart';
-
 import 'package:waslny/screens/splash_screen/splash_screen.dart';
-
-
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +16,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Invite(),
+      home: const SplashScreen(),
     );
   }
 }
