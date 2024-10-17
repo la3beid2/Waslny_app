@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waslny/screens/notifications.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,23 +42,27 @@ class HomeScreen extends StatelessWidget {
           ),
           child: AppBar(
             title: const Padding(
-              padding: EdgeInsets.only(top: 8.0), // إزاحة المحتوى إلى الأسفل
+              padding: EdgeInsets.only(top: 15.0), // إزاحة المحتوى إلى الأسفل
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text("  : توصيل إلى  ",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'SomarSans',
-                          fontSize: 12)),
+                  Text(
+                    "  : توصيل إلى  ",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'SomarSans',
+                        fontSize: 12),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text("شارع عمر المختار",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'SomarSans',
-                              fontSize: 15)),
+                      Text(
+                        "شارع عمر المختار",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: 'SomarSans',
+                            fontSize: 15),
+                      ),
                       Icon(Icons.location_on, color: Colors.blue),
                     ],
                   ),
@@ -65,25 +70,36 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
 
-            leading: IconButton(
-              icon:
-                  const Icon(Icons.notifications_active, color: Colors.orange),
-              onPressed: () {
-                // Action when the icon is pressed
-              },
+            // إزاحة leading IconButton إلى الأسفل لمساواته مع النص
+            leading: Padding(
+              padding: const EdgeInsets.only(top: 15.0), // نفس الإزاحة مثل النص
+              child: IconButton(
+                icon: const Icon(Icons.notifications_active, color: Colors.orange),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Notifications()),
+                  );
+                },
+              ),
             ),
+
+            // إزاحة actions IconButton إلى الأسفل لمساواته مع النص
             actions: [
-              IconButton(
-                icon: const Icon(Icons.person, color: Colors.orange),
-                onPressed: () {},
+              Padding(
+                padding: const EdgeInsets.only(top: 15.0), // نفس الإزاحة مثل النص
+                child: IconButton(
+                  icon: const Icon(Icons.person, color: Colors.orange),
+                  onPressed: () {},
+                ),
               ),
             ],
-            backgroundColor: Colors.transparent,
-            // اجعل خلفية AppBar شفافة
+            backgroundColor: Colors.transparent, // اجعل خلفية AppBar شفافة
             elevation: 0, // إلغاء ارتفاع AppBar الافتراضي
           ),
         ),
       ),
+
       backgroundColor: Colors.white, // تعيين خلفية التطبيق باللون الأبيض
       body: SingleChildScrollView(
         child: Column(
@@ -120,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
                     // لمنع الصورة من الخروج عن حدود البطاقة
                     child: Image.asset(
-                      'assets/images/car.png',
+                      'assets/images/car1.png',
                       fit: BoxFit.cover, // جعل الصورة تملأ البطاقة بالكامل
                     ),
                   ),
