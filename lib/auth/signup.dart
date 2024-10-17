@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waslny/auth/login.dart';
+import 'package:waslny/screens/home.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -21,11 +22,11 @@ class _SignUpState extends State<SignUp> {
           padding: const EdgeInsets.only(bottom: 8.0),
           child: IconButton(
             icon: const Icon(
-              Icons.arrow_back,
+              Icons.arrow_back_ios,
               color: Colors.amber,
             ),
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.pop(context);
             },
           ),
         ),
@@ -179,7 +180,13 @@ class _SignUpState extends State<SignUp> {
             ),
             const SizedBox(height: 10.0),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF3FA2F6),
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -201,8 +208,11 @@ class _SignUpState extends State<SignUp> {
             Center(
                 child: TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const Login()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Login()),
+                      );
+
                     },
                     child: const Text(
                       "لدي حساب من قبل",

@@ -14,11 +14,11 @@ class ForgetPassword extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 8.0),
           child: IconButton(
             icon: const Icon(
-              Icons.arrow_back,
+              Icons.arrow_back_ios,
               color: Colors.amber,
             ),
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.pop(context);
             },
           ),
         ),
@@ -97,8 +97,11 @@ class ForgetPassword extends StatelessWidget {
             const SizedBox(height: 50.0),
             ElevatedButton(
               onPressed: () {
-                 Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const Otp()));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Otp()),
+                );
+
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF3FA2F6),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waslny/auth/forget_password.dart';
 import 'package:waslny/auth/signup.dart';
+import 'package:waslny/screens/home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -20,11 +21,11 @@ class _LoginState extends State<Login> {
           padding: const EdgeInsets.only(bottom: 8.0),
           child: IconButton(
             icon: const Icon(
-              Icons.arrow_back,
+              Icons.arrow_back_ios,
               color: Colors.amber,
             ),
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.pop(context);
             },
           ),
         ),
@@ -130,8 +131,11 @@ class _LoginState extends State<Login> {
               children: [
                 TextButton(
                   onPressed: () {
-                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const ForgetPassword()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ForgetPassword()),
+                    );
+
                   },
                   child: const Text(
                     'نسيت كلمة المرور ؟',
@@ -146,7 +150,13 @@ class _LoginState extends State<Login> {
             ),
             const SizedBox(height: 30.0),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
+
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF3FA2F6),
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -168,8 +178,11 @@ class _LoginState extends State<Login> {
             Center(
                 child: TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const SignUp()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SignUp()),
+                      );
+
                     },
                     child: const Text(
                       "ليس لدي حساب من قبل",

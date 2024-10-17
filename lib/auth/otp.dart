@@ -21,11 +21,11 @@ class _OtpState extends State<Otp> {
           padding: const EdgeInsets.only(bottom: 8.0),
           child: IconButton(
             icon: const Icon(
-              Icons.arrow_back,
+              Icons.arrow_back_ios,
               color: Colors.amber,
             ),
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.pop(context);
             },
           ),
         ),
