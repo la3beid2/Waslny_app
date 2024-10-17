@@ -145,17 +145,15 @@ class HomeScreen extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
                     // لمنع الصورة من الخروج عن حدود البطاقة
                     child: Image.asset(
-                      'assets/images/car1.jpg',
+                      'assets/images/car1.png',
                       fit: BoxFit.cover, // جعل الصورة تملأ البطاقة بالكامل
                     ),
                   ),
                 ),
               ),
             ),
-
             // المسافة لخلق مسافة بين الشعار والأزرار
             const SizedBox(height: 20),
-
             // زرين كبيرين
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
