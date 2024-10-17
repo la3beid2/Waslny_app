@@ -19,7 +19,17 @@ class ProfilePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.arrow_forward_ios, color: Colors.blue),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
       ),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -72,7 +82,7 @@ class ProfilePage extends StatelessWidget {
                   onTap: () {},
                 ),
               ],
-              cardColor: Colors.grey[200]!, // لون البطاقة
+              cardColor: Colors.white, // استخدم اللون الخاص بـ "دعوة صديق"
             ),
 
             // دمج البطاقة الخاصة بـ FAQs، دعوة صديق، تقييم التطبيق، وتغيير اللغة
@@ -99,7 +109,7 @@ class ProfilePage extends StatelessWidget {
                   onTap: () {},
                 ),
               ],
-              cardColor: Colors.white, // لون البطاقة
+              cardColor: Colors.white, // استخدم اللون الخاص بـ "دعوة صديق"
             ),
 
             // البطاقة الخاصة بتسجيل الخروج
@@ -107,7 +117,7 @@ class ProfilePage extends StatelessWidget {
               icon: Icons.logout_outlined,
               title: 'تسجيل خروج',
               onTap: () {},
-              cardColor: Colors.grey[200]!, // لون البطاقة
+              cardColor: Colors.white,
             ),
           ],
         ),
@@ -125,7 +135,7 @@ class ProfilePage extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 3,
-        color: Colors.grey[200], // هنا يمكنك التحكم في لون البطاقة
+        color: cardColor, // هنا يمكنك التحكم في لون البطاقة
         child: Column(
           children: items
               .map((item) => InkWell(
@@ -136,6 +146,7 @@ class ProfilePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Icon(Icons.arrow_back_ios, color: Colors.grey),
+                  const SizedBox(width: 10),
                   Expanded(
                     child: Text(
                       item.title,
@@ -146,7 +157,7 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Icon(item.icon, color: Colors.blue),
+                  Icon(item.icon, color: Colors.blue), // أيقونة زرقاء لتتناسب مع لون البطاقة
                 ],
               ),
             ),
@@ -188,7 +199,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Icon(icon, color: Colors.blue),
+                Icon(icon, color: Colors.blue), // أيقونة زرقاء لتتناسب مع لون البطاقة
               ],
             ),
           ),

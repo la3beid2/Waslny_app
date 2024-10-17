@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:waslny/screens/notifications.dart';
 import 'package:waslny/screens/splash_screen/splash_screen.dart';
 
 

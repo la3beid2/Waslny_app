@@ -63,7 +63,7 @@ class _OtpState extends State<Otp> {
                       fontSize: 12,
                     ),
                   ),
-                  const SizedBox(
+                   SizedBox(
                     height: 10,
                   ),
                   Text(
