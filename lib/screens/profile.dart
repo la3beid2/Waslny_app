@@ -7,27 +7,43 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text(
-          "الملف الشخصي",
-          style: TextStyle(
-            fontFamily: 'SomarSans',
-            color: Colors.black,
-            fontSize: 20,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70.0), // ارتفاع AppBar
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white, // لون خلفية AppBar
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1), // لون الظل
+                spreadRadius: 1, // انتشار الظل
+                blurRadius: 5, // درجة ضبابية الظل
+                offset: const Offset(0, 2), // موضع الظل
+              ),
+            ],
+          ),
+          child: AppBar(
+            title: const Text(
+              "الملف الشخصي",
+              style: TextStyle(
+                fontFamily: 'SomarSans',
+                color: Colors.black,
+                fontSize: 20,
+              ),
+            ),
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            automaticallyImplyLeading: false,
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.arrow_forward_ios, color: Colors.blue),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
           ),
         ),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.arrow_forward_ios, color: Colors.blue),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
       ),
 
       body: SingleChildScrollView(
@@ -82,7 +98,7 @@ class ProfilePage extends StatelessWidget {
                   onTap: () {},
                 ),
               ],
-              cardColor: Colors.white, // استخدم اللون الخاص بـ "دعوة صديق"
+              cardColor: Colors.white,
             ),
 
             // دمج البطاقة الخاصة بـ FAQs، دعوة صديق، تقييم التطبيق، وتغيير اللغة
@@ -109,7 +125,7 @@ class ProfilePage extends StatelessWidget {
                   onTap: () {},
                 ),
               ],
-              cardColor: Colors.white, // استخدم اللون الخاص بـ "دعوة صديق"
+              cardColor: Colors.white,
             ),
 
             // البطاقة الخاصة بتسجيل الخروج
@@ -135,33 +151,35 @@ class ProfilePage extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 3,
-        color: cardColor, // هنا يمكنك التحكم في لون البطاقة
+        color: cardColor,
         child: Column(
           children: items
               .map((item) => InkWell(
-            onTap: item.onTap,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(Icons.arrow_back_ios, color: Colors.grey),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      item.title,
-                      textAlign: TextAlign.right,
-                      style: const TextStyle(
-                        fontFamily: 'SomarSans',
-                        fontSize: 16,
+                    onTap: item.onTap,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Icon(Icons.arrow_back_ios, color: Colors.grey),
+                          // زيادة المسافة بين الأيقونة والنص
+                          const SizedBox(
+                              width: 16), // المسافة بين الأيقونة والنص
+                          Expanded(
+                            child: Text(
+                              item.title,
+                              textAlign: TextAlign.right,
+                              style: const TextStyle(
+                                fontFamily: 'SomarSans',
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                          Icon(item.icon, color: Colors.blue),
+                        ],
                       ),
                     ),
-                  ),
-                  Icon(item.icon, color: Colors.blue), // أيقونة زرقاء لتتناسب مع لون البطاقة
-                ],
-              ),
-            ),
-          ))
+                  ))
               .toList(),
         ),
       ),
@@ -173,14 +191,14 @@ class ProfilePage extends StatelessWidget {
     required IconData icon,
     required String title,
     required VoidCallback onTap,
-    Color cardColor = Colors.white, // لون البطاقة الافتراضي
+    Color cardColor = Colors.white,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         elevation: 3,
-        color: cardColor, // هنا يمكنك التحكم في لون البطاقة
+        color: cardColor,
         child: InkWell(
           onTap: onTap,
           child: Padding(
@@ -189,6 +207,8 @@ class ProfilePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Icon(Icons.arrow_back_ios, color: Colors.grey),
+
+                const SizedBox(width: 50), // المسافة بين الأيقونة والنص
                 Expanded(
                   child: Text(
                     title,
@@ -199,7 +219,7 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Icon(icon, color: Colors.blue), // أيقونة زرقاء لتتناسب مع لون البطاقة
+                Icon(icon, color: Colors.blue),
               ],
             ),
           ),
