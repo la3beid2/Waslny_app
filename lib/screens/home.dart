@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text("شارع عمر المختار",
+                      Text("شارع الهلال",
                           style: TextStyle(
                               color: Colors.black,
                               fontFamily: 'SomarSans',
@@ -96,6 +96,7 @@ class HomeScreen extends StatelessWidget {
                 // اجعل الكتابة من اليمين لليسار
                 decoration: InputDecoration(
                   hintText: 'أخبرنا عن وجهتك؟',
+                  hintStyle: const TextStyle(fontFamily: 'SomarSans'),
                   prefixIcon: const Icon(Icons.search),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
@@ -105,7 +106,6 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -120,7 +120,7 @@ class HomeScreen extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
                     // لمنع الصورة من الخروج عن حدود البطاقة
                     child: Image.asset(
-                      'assets/images/car.png',
+                      'assets/images/car.jpg',
                       fit: BoxFit.cover, // جعل الصورة تملأ البطاقة بالكامل
                     ),
                   ),
